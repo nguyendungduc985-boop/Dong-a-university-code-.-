@@ -1,0 +1,1 @@
+Có, vẫn tạo được đối tượng, nhưng các thuộc tính được khởi tạo trong __init__() của lớp cha sẽ không được khởi tạo.

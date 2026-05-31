@@ -1,0 +1,4 @@
+tiền 10000000 gửi 12 tháng có lãi là 120000 đồng
+tiền 15000000 gửi 3 tháng có lãi là 75000 đồng
+tiền 20000000 gửi 6 tháng có lãi là 160000 đồng
+tiền 10000000 gửi 3 tháng có lãi là 50000 đồng

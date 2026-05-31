@@ -1,0 +1,53 @@
+dòng 1
+import pandas as pd
+Import thư viện pandas
+Dùng để xử lý dữ liệu dạng bảng (DataFrame)
+dòng 2
+from sklearn.model_selection import train_test_split
+Import hàm train_test_split
+Dùng để chia dữ liệu thành tập huấn luyện (train) và tập kiểm tra (test)
+dòng 3
+from sklearn.linear_model import LinearRegression
+Import mô hình hồi quy tuyến tính (Linear Regression)
+Dùng để xây dựng mô hình dự đoán
+dòng 4,5
+data = {
+    'Area': [50, 60, 70, 80, 90],
+    'Price': [100, 150, 200, 250, 300]
+}
+Tạo dữ liệu ban đầu:
+Area: diện tích nhà
+Price: giá nhà tương ứng
+dòng 6
+df = pd.DataFrame(data)
+Chuyển dữ liệu từ dictionary sang DataFrame
+Giúp xử lý dữ liệu dễ dàng hơn
+dòng 7
+X = df[['Area']]
+Lấy cột Area làm biến độc lập (X)
+Dùng dấu [[ ]] để giữ X ở dạng ma trận 2 chiều
+dòng 8
+y = df['Price']
+Lấy cột Price làm biến phụ thuộc (y)
+Là giá cần dự đoán
+dòng 9
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+Chia dữ liệu thành:
+80% train
+20% test
+random_state=42: cố định kết quả chia để lần chạy nào cũng giống nhau
+dòng 10
+model = LinearRegression()
+Khởi tạo mô hình hồi quy tuyến tính
+dòng 11
+model.fit(X_train, y_train)
+Huấn luyện mô hình
+Mô hình học mối quan hệ giữa diện tích và giá từ dữ liệu train
+dòng 12
+predictions = model.predict(X_test)
+Dùng mô hình đã huấn luyện để dự đoán giá trên tập test
+dòng 13
+print("Dự đoán:", predictions)
+In ra kết quả giá dự đoán

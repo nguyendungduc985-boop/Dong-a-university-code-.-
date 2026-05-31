@@ -1,0 +1,10 @@
+L,Lê Hải Nam,8,500
+C,Cao Trung Quân,6,1520,1.5
+L,Nguyễn Công Hoàng Hiếu,4,400
+N,Nguyễn Anh Quân,12,21354,0
+L,Lê Gia Luân,15,458
+L,Lê Khánh Minh,4,545
+L,Lê Thành Tâm,7,8789
+V,Văn Ngọc Bảo Bảo,78,854,2.5
+L,Lê Quang Thành,45,87874
+T,Trần Ngọc Toàn,4,44545,1

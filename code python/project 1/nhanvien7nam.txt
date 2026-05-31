@@ -1,0 +1,5 @@
+Ho ten: Lê Hải Nam, So nam cong tac: 8, Phu cap: 260, luong: 5260, So san pham: 500
+Ho ten: Nguyễn Anh Quân, So nam cong tac: 12, Phu cap: 340, luong: 21694.0, Mức lương: 21354.0, Số ngày nghỉ: 0.0
+Ho ten: Lê Gia Luân, So nam cong tac: 15, Phu cap: 400, luong: 4980, So san pham: 458
+Ho ten: Văn Ngọc Bảo Bảo, So nam cong tac: 78, Phu cap: 1660, luong: 2489.0, Mức lương: 854.0, Số ngày nghỉ: 2.5
+Ho ten: Lê Quang Thành, So nam cong tac: 45, Phu cap: 1000, luong: 879740, So san pham: 87874
