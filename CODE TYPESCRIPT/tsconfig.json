@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "rootDir": "./",          /* Để trống hoặc ./ để nó quét toàn bộ dự án */
+    "outDir": "dist",
+    "types": ["node"],
+    "strict": true,
+    "esModuleInterop": true   /* Nên thêm dòng này để tránh lỗi import */
+  },
+  "include": ["demo/**/*"]    /* Chỉ định quét thư mục demo của bạn */
+}

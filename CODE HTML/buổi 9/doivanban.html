@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM cơ bản</title>
+</head>
+<body>
+  <h2 id="title">Chào mừng bạn</h2>
+  <button onclick="changeText()">Đổi nội dung</button>
+
+  <script>
+    function changeText() {
+      document.getElementById("title").innerHTML = "Chào các bạn sinh viên";
+    }
+  </script>
+</body>
+</html>

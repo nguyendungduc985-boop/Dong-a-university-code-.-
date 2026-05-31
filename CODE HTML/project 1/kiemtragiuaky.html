@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Mục 3 và Mục 4</title>
+</head>
+<body>
+<div class="container-mua-sam">
+  <aside class="thanh-ben-loc">
+    <div class="phan-loc">
+      <h4>Category</h4>
+      <ul class="danh-muc"></ul>
+        <li class="active">Mobile accessory</li>
+        <li>Electronics</li>
+        <li>Smartphones</li>
+        <li>Modern tech</li>
+        <li class="xem-tat-ca">See all</li>
+      </ul>
+    </div>
+
+    <div class="phan-loc">
+      <h4>Brands</h4>
+      <label><input type="checkbox"> Samsung</label>
+      <label><input type="checkbox"> Apple</label>
+      <label><input type="checkbox"> Huawei</label>
+      <label><input type="checkbox"> Pocco</label>
+      <label><input type="checkbox"> Lenovo</label>
+      <div class="xem-tat-ca">See all</div>
+    </div>
+
+    <div class="phan-loc">
+      <h4>Features</h4>
+      <label><input type="checkbox"> Metallic</label>
+      <label><input type="checkbox"> Plastic cover</label>
+      <label><input type="checkbox"> 8GB Ram</label>
+      <label><input type="checkbox"> Super power</label>
+      <label><input type="checkbox"> Large Memory</label>
+      <div class="xem-tat-ca">See all</div>
+    </div>
+  </aside>
+
+  <main class="danh-sach-san-pham">
+
+    <div class="the-san-pham">
+      <div class="hinh-anh-sp">
+        <img src="picture/ihpone.jpg" alt="iPhone ">
+      </div>
+      <div class="thong-tin-sp">
+        <h3>Canon Camera EOS 2000, Black 10x zoom</h3>
+        <div class="gia-sp">
+          <span class="gia-hien-tai">$998.00</span>
+          <span class="gia-cu">$1128.00</span>
+        </div>
+        <div class="danh-gia-sp">
+          <span class="sao">
+            <span class="vang">★</span>
+            <span class="vang">★</span>
+            <span class="vang">★</span>
+            <span class="vang">★</span>
+            <span class="xam">★</span>
+          </span>
+          <span class="diem">7.5</span> · <span class="orders">154 orders</span> · <span class="mien-phi-vc">Free Shipping</span>
+        </div>
+        <p class="mo-ta-ngan">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <a href="#" class="xem-chi-tiet">View details</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container-mua-sam {
+  display: flex;
+  width: 1200px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.thanh-ben-loc {
+  width: 270px;
+  background: #f0f4f8;
+  padding: 20px;
+  border-right: 2px solid #ddd;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.phan-loc {
+  margin-bottom: 25px;
+}
+
+.phan-loc h4 {
+  margin-bottom: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.phan-loc label {
+  display: block;
+  margin: 6px 0;
+  cursor: pointer;
+}
+
+.phan-loc .xem-tat-ca {
+  color:blue ;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.danh-sach-san-pham {
+  flex: 1;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.the-san-pham {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 15px;
+  transition: box-shadow 0.3s;
+}
+
+.the-san-pham:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.hinh-anh-sp img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.thong-tin-sp {
+  flex: 1;
+}
+
+.thong-tin-sp h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 8px;
+}
+
+.gia-sp {
+  margin-bottom: 6px;
+}
+
+.gia-hien-tai {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.gia-cu {
+  text-decoration: line-through;
+  color: lightgray;
+}
+
+.danh-gia-sp {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.sao {
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.sao .vang {
+  color: gold;
+}
+
+.sao .xam {
+  color: lightgray;
+}
+
+.diem {
+  color: gold;
+  font-weight: 600;
+}
+
+.orders {
+  color: lightgrey;
+}
+
+.mien-phi-vc {
+  color: green;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.mo-ta-ngan {
+  font-size: 14px;
+  color: grey;
+  margin-bottom: 8px;
+}
+
+.xem-chi-tiet {
+  color: blue;
+  text-decoration: none;
+}
+</style>
+</body>
+</html>

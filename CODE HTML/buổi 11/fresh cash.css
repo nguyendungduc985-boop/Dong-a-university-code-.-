@@ -1,0 +1,10 @@
+/* CSS Tùy chỉnh */
+.bg-dark-custom {
+    background-color: #1a1a1a !important; /* Thay bằng màu nền tối trong ảnh */
+}
+
+.btn-green-custom {
+    background-color: #008000; /* Thay bằng màu xanh lá cây đậm trong ảnh */
+    border-color: #008000;
+    color: white;
+}

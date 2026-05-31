@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const student_1 = require("./student");
+const studentmanager_1 = require("./studentmanager");
+const manager = new studentmanager_1.StudentManager();
+const student1 = new student_1.Student('sv01', 'Nguyễn Văn A', 20);
+const student2 = new student_1.Student('sv02', 'Trần Thị B', 21);
+const student3 = new student_1.Student('sv03', 'Lê Văn C', 22);
+manager.addStudent(student1);
+manager.addStudent(student2);
+manager.addStudent(student3);
+manager.listStudents();

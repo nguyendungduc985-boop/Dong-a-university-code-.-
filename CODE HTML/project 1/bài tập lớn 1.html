@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Website Bán Hàng</title>
+    <link rel="icon" href="picture/logo.png/channels4_profile.jpg">
+    <link rel="stylesheet" href="style bài tập lớn 1.css">
+    <style>
+        /* ----- Toàn trang ----- */
+        body {
+            margin: 0;
+            padding: 0;
+            border: 5px solid grey;
+            background: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-collapse: collapse;
+        }
+
+        /* ----- Header ----- */
+        table[bgcolor="red"] {
+            color: white;
+        }
+
+        /* ----- Thanh menu ----- */
+        table[bgcolor="yellow"] a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        table[bgcolor="yellow"] a:hover {
+            background-color: orange;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* ----- Sidebar ----- */
+        .sidebar a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar a:hover {
+            background-color: #ffeeba;
+            border-radius: 5px;
+        }
+
+        /* ----- Sản phẩm dạng box ----- */
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .product-box {
+            background: white;
+            width: 220px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 15px;
+            transition: 0.3s;
+        }
+
+        .product-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        .product-box img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-box h4 {
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        .product-box p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .product-box button {
+            background-color: pink;
+            color: blue;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .product-box button:hover {
+            background-color: orange;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* ----- Đánh giá & Tin tức ----- */
+        .info-section {
+            background: white;
+            width: 95%;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .info-section img {
+            border-radius: 10px;
+        }
+
+        /* ----- Tải ứng dụng ----- */
+        .download-app {
+            background: white;
+            text-align: center;
+            padding: 30px;
+            margin: 20px auto;
+            width: 95%;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .download-app img {
+            width: 160px;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        .download-app img:hover {
+            transform: scale(1.1);
+        }
+
+        /* ----- Footer ----- */
+        footer {
+            background: white;
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <table width="100%" bgcolor="red">
+        <tr>
+            <td width="80" align="center">
+                <img src="picture/logo.png/channels4_profile.jpg" alt="Logo" style="width: 60px; border-radius:50%;">
+            </td>
+            <td>
+                <h1 style="display:inline;">Cellphones</h1>
+                <p>Chào mừng bạn đến với cửa hàng trực tuyến!</p>
+            </td>
+            <td align="right">
+                <form style="display:inline;">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                    <input type="submit" value="Tìm">
+                </form>
+                <br>
+                <a href="#">Tài khoản</a> | <a href="#">Giỏ hàng (0)</a>
+            </td>
+        </tr>
+    </table>
+
+    <!-- MENU -->
+    <table width="100%" bgcolor="yellow">
+        <tr align="center">
+            <td><a href="#">Trang chủ</a></td>
+            <td><a href="#">Sản phẩm</a></td>
+            <td><a href="#">Khuyến mãi</a></td>
+            <td><a href="#">Liên hệ</a></td>
+        </tr>
+    </table>
+
+    <!-- BANNER -->
+    <table width="100%" bgcolor="white">
+        <tr>
+            <td align="center">
+                <img src="picture/logo.png/hero_endframe__xdzisdq1ppem_xlarge_2x.jpg" alt="Banner" width="1000" height="450">
+            </td>
+        </tr>
+    </table>
+
+    <!-- DANH MỤC + SẢN PHẨM -->
+    <table width="100%">
+        <tr valign="top">
+            <!-- SIDEBAR -->
+            <td width="220" class="sidebar">
+                <table width="100%" bgcolor="white" cellpadding="10">
+                    <tr><td align="center"><h2 style="font-size:18px;">Danh mục sản phẩm</h2></td></tr>
+                    <tr><td><a href="#">Điện thoại</a></td></tr>
+                    <tr><td><a href="#">Laptop</a></td></tr>
+                    <tr><td><a href="#">Máy tính bảng</a></td></tr>
+                    <tr><td><a href="#">Phụ kiện</a></td></tr>
+                    <tr><td><a href="https://cellphones.com.vn/do-choi-cong-nghe/apple-watch.html">Đồng hồ</a></td></tr>
+                    <tr><td><a href="#">Máy đổi trả</a></td></tr>
+                </table>
+            </td>
+
+            <!-- NỘI DUNG CHÍNH -->
+            <td>
+                <table align="center" width="95%" bgcolor="white">
+                    <tr>
+                        <td align="center">
+                            <h2>Giới thiệu về Cellphones</h2>
+                            <p>Cellphones chuyên cung cấp các sản phẩm công nghệ chính hãng, giá tốt, dịch vụ tận tâm.</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- SẢN PHẨM DẠNG BOX -->
+                 <div class="product-container">
+    </div>
+
+<br><br>
+
+<table align="center" width="95%" bgcolor="white" style="margin-top: 20px;">
+    <tr>
+        <td align="center">
+            <h2 style="font-size:22px; color: #ff4d4d; border-bottom: 2px solid #ff4d4d; padding-bottom: 5px;">
+                🔥 Deal Khủng Hôm Nay
+            </h2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="list-item-sale">
+                
+                <div class="item-sale">
+                    <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/m/sm-l305_001_front_green_240429.png" alt="Galaxy Watch">
+                    <b>Samsung Galaxy Watch</b>
+                    <p style="text-decoration: line-through; color: gray; font-size: 12px;">200$</p>
+                    <p style="color: red; font-weight: bold;">159$</p>
+                    <button>GIẢM 20%</button>
+                    <a href="https://cellphones.com.vn/samsung-galaxy-watch-7.html?product_id=86034"></a>
+                </div>
+
+                <div class="item-sale">
+                    <img src="data:image/jpeg;base64,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" alt="iPad Air 6">
+                    <b>iPad Air 6</b>
+                    <p style="text-decoration: line-through; color: gray; font-size: 12px;">700$</p>
+                    <p style="color: red; font-weight: bold;">599$</p>
+                    <button>GIẢM 15%</button>
+                </div>
+
+                <div class="item-sale">
+                    <img src="data:image/jpeg;base64,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">
+                    <p style="text-decoration: line-through; color: gray; font-size: 12px;">250$</p>
+                    <p style="color: red; font-weight: bold;">199$</p>
+                    <button>GIẢM 25%</button>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+                <div class="product-container">
+                    <div class="product-box">
+                        <img src="picture/logo.png/iphone 15.jpg" alt="Iphone 15">
+                        <h4>Iphone 15</h4>
+                        <p>Giá: 900$</p>
+                        <button>Mua ngay</button>
+                    </div>
+
+                    <div class="product-box">
+                        <img src="picture/logo.png/iphone 17.jpg" alt="Iphone 17">
+                        <h4>Iphone 17</h4>
+                        <p>Giá: 1000$</p>
+                        <button>Mua ngay</button>
+                    </div>
+
+                    <div class="product-box">
+                        <img src="picture/logo.png/ss-s24-ultra-xam-222.webp" alt="Samsung S24">
+                        <h4>Samsung S24</h4>
+                        <p>Giá: 850$</p>
+                        <button>Mua ngay</button>
+                    </div>
+
+                    <div class="product-box">
+                        <img src="picture/logo.png/shopping.webp" alt="Tai nghe JBL">
+                        <h4>Tai nghe JBL 770NC</h4>
+                        <p>Giá: 150$</p>
+                        <button>Mua ngay</button>
+                    </div>
+
+                    <div class="product-box">
+                        <img src="picture/logo.png/legion.webp" alt="Lenovo Legion Pro 7">
+                        <h4>Lenovo Legion Pro 7</h4>
+                        <p>Giá: 1500$</p>
+                        <button>Mua ngay</button>
+                    </div>
+
+                    <div class="product-box">
+                        <img src="picture/logo.png/acer.webp" alt="Acer Gaming Aspire 7">
+                        <h4>Acer Gaming Aspire 7</h4>
+                        <p>Giá: 1900$</p>
+                        <button>Mua ngay</button>
+                    </div>
+
+                    <div class="product-box">
+                        <img src="picture/logo.png/msi.webp" alt="MSI Katana 15">
+                        <h4>MSI Katana 15</h4>
+                        <p>Giá: 2050$</p>
+                        <button>Mua ngay</button>
+                    </div>
+
+                    <div class="product-box">
+                        <img src="picture/logo.png/asus.webp" alt="ASUS ROG Strix G16">
+                        <h4>ASUS ROG Strix G16</h4>
+                        <p>Giá: 4050$</p>
+                        <button>Mua ngay</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- ĐÁNH GIÁ KHÁCH HÀNG -->
+    <div class="info-section">
+        <h3>Đánh giá khách hàng</h3>
+        <ul>
+            <li><b>Nguyễn Văn A:</b> Sản phẩm chất lượng, giao hàng nhanh!</li>
+            <li><b>Trần Thị B:</b> Nhân viên tư vấn nhiệt tình, giá tốt.</li>
+            <li><b>Lê Văn C:</b> Mua laptop rất hài lòng, sẽ ủng hộ tiếp.</li>
+        </ul>
+    </div>
+
+    <!-- TIN TỨC -->
+    <div class="info-section">
+        <h3>Tin tức & Thông báo</h3>
+        <ul>
+            <li><img src="picture/logo.png/Tren-tay-samsung-galaxy-tab-s10-lite.jpg" width="200"><br>
+            <a href="https://cellphones.com.vn/sforum/tren-tay-samsung-galaxy-tab-s10-lite">Trên tay Samsung Galaxy Tab S10 Lite: Khung kim loại sang trọng, tích hợp sẵn S Pen, giá 8.49 triệu</a></li>
+            <li><img src="picture/logo.png/honor-400-series-ra-mat-7.jpg" width="200"><br>
+            <a href="https://cellphones.com.vn/sforum/cellphones-mo-ban-loat-dien-thoai-honor">CellphoneS mở bán loạt điện thoại HONOR mới với giá chỉ từ 2.16 triệu đồng, ưu đãi giảm giá hấp dẫn</a></li>
+        </ul>
+    </div>
+
+    <!-- TẢI ỨNG DỤNG -->
+    <div class="download-app">
+        <h3>Tải ứng dụng Cellphones</h3>
+        <p>Trải nghiệm mua sắm nhanh hơn, nhận thông báo ưu đãi trực tiếp từ điện thoại của bạn!</p>
+        <img src="picture/logo.png/ch play.png" alt="Tải trên Google Play">
+        <img src="picture/logo.png/App_Store_26_icon.webp" alt="Tải trên App Store">
+    </div>
+
+    <!-- LIÊN HỆ -->
+    <div class="info-section">
+        <h3>Liên hệ nhanh</h3>
+        <p>Hotline: 0123 456 789 | Email: cellphones@gmail.com</p>
+        <p>Địa chỉ: 123 Đường Công Nghệ, Quận 1, TP.Đà Nẵng</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2025 Ecommerce Shop. All rights reserved.<br>
+        Hotline: 0123 456 789 | Facebook | Zalo | Instagram
+    </footer>
+</body>
+</html>

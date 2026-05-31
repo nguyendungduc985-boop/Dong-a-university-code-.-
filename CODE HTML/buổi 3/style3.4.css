@@ -1,0 +1,40 @@
+body {
+    background: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.list-item-sale {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+    justify-items: center;
+    margin: 40px auto;
+    padding: 20px;
+    border-left: 2px solid #f0f0f0;
+    border-right: 2px solid #f0f0f0;
+    max-width: 1200px; 
+}
+
+.item-sale {
+    width: 220px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+
+.item-sale:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.item-sale img {
+    width: 180px;
+    height: auto;
+    border-radius: 15px;
+}

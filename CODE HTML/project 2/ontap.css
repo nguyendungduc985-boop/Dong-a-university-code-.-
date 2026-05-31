@@ -1,0 +1,64 @@
+body{
+    background-color: white;
+}
+h1{
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+h3{
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+.login-container {
+    width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #f9f9f9; /* Màu nền nhạt cho form */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Bóng mờ nhẹ */
+    border-radius: 8px; /* Bo tròn các góc */
+}
+.input-group {
+    margin-bottom: 20px;
+}
+button:hover {
+    background-color: #5ed0d9; /* Màu xanh đậm hơn khi hover */
+}
+.label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+}
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd; /* Viền xám nhạt */
+    border-radius: 6px; /* Bo tròn ô nhập */
+    outline: none;
+    font-size: 14px;
+    color: #555;
+    transition: 0.3s;
+}
+input::placeholder {
+    color: #aaa;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #72ecfc; /* Màu xanh cyan giống hình */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+button:hover {
+    background-color: #5ed0d9; /* Màu xanh đậm hơn khi hover */
+}

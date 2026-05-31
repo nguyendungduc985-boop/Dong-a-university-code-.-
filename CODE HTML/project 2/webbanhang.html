@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FreshCart Dark Mode - Fixed Banner Overflow</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    
+    <style>
+        :root {
+            --fc-dark-bg: #121212;      
+            --fc-card-bg: #1f1f1f;      
+            --fc-border: #333;          
+            --fc-primary: #0aad0a;      
+            --fc-text-muted: #888;
+        }
+
+        body {
+            background-color: var(--fc-dark-bg);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+    
+        header { background-color: var(--fc-dark-bg); border-bottom: 1px solid var(--fc-border); }
+        
+   
+        .logo-img { 
+            filter: invert(1) hue-rotate(180deg); 
+            max-height: 40px; 
+        }
+
+        .search-input {
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            color: #fff;
+        }
+        .search-input:focus {
+            background-color: #333;
+            color: #fff;
+            border-color: var(--fc-primary);
+            box-shadow: none;
+        }
+        .search-input::placeholder { color: #aaa; }
+        
+        .location-btn { color: #fff; border-color: #444; }
+        .location-btn:hover { background-color: #333; color: #fff; }
+
+
+        .navbar-dark-custom { border-bottom: 1px solid var(--fc-border); padding: 10px 0; }
+        .nav-link { color: #ccc !important; font-weight: 500; font-size: 14px; }
+        .nav-link:hover { color: #fff !important; }
+
+        .card-category {
+            background-color: var(--fc-card-bg);
+            border: 1px solid var(--fc-border);
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .card-category:hover { border-color: var(--fc-primary); box-shadow: 0 0 10px rgba(10, 173, 10, 0.2); }
+        .card-category img { margin-bottom: 10px; max-width: 100%; height: auto; }
+        .card-category h6 { font-size: 14px; margin: 0; color: #ddd; }
+
+        .promo-banner {
+            border-radius: 8px;
+            padding: 40px;
+            background-size: cover;
+            background-position: center;
+            color: #333;
+        }
+        .promo-banner h3 { font-weight: 800; }
+
+        .card-product {
+            background: #fff;
+            border-radius: 10px;
+            border: none;
+            padding: 15px;
+            height: 100%;
+            position: relative;
+            color: #222;
+            transition: transform 0.2s;
+        }
+        .card-product:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
+        .card-product .badge-sale {
+            position: absolute;
+            top: 10px; left: 10px;
+            background-color: #dc3545;
+            color: white;
+            padding: 2px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .card-product img {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .card-product .cat-text { font-size: 12px; color: #888; margin-bottom: 4px; }
+        .card-product .prod-title { font-size: 15px; font-weight: 700; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .card-product .stars { color: #ffc107; font-size: 12px; margin-bottom: 10px; }
+        .card-product .price { font-weight: 800; font-size: 16px; margin-right: 5px; }
+        .card-product .price-old { text-decoration: line-through; color: #999; font-size: 13px; }
+        
+        .btn-add-cart {
+            background-color: var(--fc-primary);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .btn-add-cart:hover { background-color: #088f08; }
+
+        .best-sell-banner {
+            background-color: var(--fc-card-bg); 
+            border: 1px solid var(--fc-border);
+            border-radius: 10px;
+            height: 100%;
+            overflow: hidden; 
+        }
+
+        .best-sell-content {
+            padding: 20px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+
+        .timer-box {
+            background: #f0f3f2;
+            padding: 5px;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 55px;
+            color: #333;
+        }
+        .timer-num { font-weight: bold; font-size: 16px; line-height: 1; }
+        .timer-label { font-size: 10px; color: #666; }
+
+        
+        .feature-icon { color: var(--fc-primary); margin-bottom: 15px; font-size: 24px; }
+        .feature-box h6 { font-weight: 700; margin-bottom: 5px; }
+        .feature-box p { color: #aaa; font-size: 14px; }
+
+        .footer-dark { background-color: var(--fc-dark-bg); border-top: 1px solid var(--fc-border); padding-top: 60px; padding-bottom: 20px; }
+        .footer-head { color: #fff; font-weight: 700; margin-bottom: 20px; }
+        .footer-link { color: #999; display: block; margin-bottom: 10px; font-size: 14px; }
+        .footer-link:hover { color: var(--fc-primary); }
+    </style>
+</head>
+<body>
+
+    <header class="py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2">
+                    <img src="https://freshcart.codescandy.com/assets/images/logo/freshcart-logo.svg" alt="FreshCart" class="img-fluid logo-img">
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control search-input" placeholder="Search for products">
+                        <button class="btn btn-dark border-secondary" type="button"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-end align-items-center gap-3">
+                    <button class="btn btn-outline-secondary location-btn btn-sm d-none d-lg-block">
+                        <i class="bi bi-geo-alt"></i> Location
+                    </button>
+                    <div class="d-flex align-items-center gap-3 text-white">
+                        <a href="#" class="position-relative"><i class="bi bi-heart fs-4"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">5</span>
+                        </a>
+                        <a href="#"><i class="bi bi-person fs-4"></i></a>
+                        <a href="#" class="position-relative"><i class="bi bi-bag fs-4"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">1</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar-dark-custom">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <div class="dropdown me-4">
+                    <button class="btn btn-success d-flex align-items-center gap-2" type="button">
+                        <i class="bi bi-grid-fill"></i> All Departments
+                    </button>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Stores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Mega menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Pages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://freshcart.codescandy.com/assets/images/slider/slide-1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://freshcart.codescandy.com/assets/images/slider/slider-2.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <main class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0">Featured Categories</h4>
+            <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-dark border-secondary"><i class="bi bi-chevron-left"></i></button>
+                <button class="btn btn-sm btn-dark border-secondary"><i class="bi bi-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <div class="row row-cols-2 row-cols-md-6 g-4 mb-5">
+            <div class="col">
+                <div class="card-category">
+                    <img src="https://freshcart.codescandy.com/assets/images/category/category-tea-coffee-drinks.jpg" alt="">
+                    <h6>Tea, Coffee & Drinks</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-category">
+                    <img src="https://freshcart.codescandy.com/assets/images/category/category-atta-rice-dal.jpg" alt="">
+                    <h6>Atta, Rice & Dal</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-category">
+                    <img src="https://freshcart.codescandy.com/assets/images/category/category-baby-care.jpg" alt="">
+                    <h6>Baby Care</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-category">
+                    <img src="https://freshcart.codescandy.com/assets/images/category/category-chicken-meat-fish.jpg" alt="">
+                    <h6>Chicken, Meat & Fish</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-category">
+                    <img src="https://freshcart.codescandy.com/assets/images/category/category-cleaning-essentials.jpg" alt="">
+                    <h6>Cleaning Essentials</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-category">
+                    <img src="https://freshcart.codescandy.com/assets/images/category/category-pet-care.jpg" alt="">
+                    <h6>Pet Care</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="promo-banner" style="background-image: url('https://freshcart.codescandy.com/assets/images/banner/ad-banner-1.jpg'); background-color: #f0ebd8;">
+                    <h5>Fruits & Vegetables</h5>
+                    <p>Get Upto 30% Off</p>
+                    <button class="btn btn-dark btn-sm">Shop Now</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="promo-banner" style="background-image: url('https://freshcart.codescandy.com/assets/images/banner/ad-banner-2.jpg'); background-color: #e9ecef;">
+                    <h5>Freshly Baked Buns</h5>
+                    <p>Get Upto 25% Off</p>
+                    <button class="btn btn-dark btn-sm">Shop Now</button>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mb-4">Popular Products</h4>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-5 g-4 mb-5">
+            <div class="col">
+                <div class="card-product">
+                    <span class="badge-sale">Sale</span>
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-1.jpg" alt="">
+                    <div class="cat-text">Snack & Munchies</div>
+                    <div class="prod-title">Haldiram's Sev Bhujia</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.5(149)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$18</span><span class="price-old">$24</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <span class="badge-sale bg-success">14%</span>
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-2.jpg" alt="">
+                    <div class="cat-text">Bakery & Biscuits</div>
+                    <div class="prod-title">NutriChoice Digestive</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.5(25)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$24</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-3.jpg" alt="">
+                    <div class="cat-text">Bakery & Biscuits</div>
+                    <div class="prod-title">Cadbury 5 Star Chocolate</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> 5(469)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$32</span><span class="price-old">$35</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <span class="badge-sale bg-danger">Hot</span>
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-4.jpg" alt="">
+                    <div class="cat-text">Snack & Munchies</div>
+                    <div class="prod-title">Onion Flavour Potato</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i> 3.5(456)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$3</span><span class="price-old">$5</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-5.jpg" alt="">
+                    <div class="cat-text">Instant Food</div>
+                    <div class="prod-title">Salted Instant Popcorn</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.5(39)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$13</span><span class="price-old">$18</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <span class="badge-sale">Sale</span>
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-6.jpg" alt="">
+                    <div class="cat-text">Dairy, Bread & Eggs</div>
+                    <div class="prod-title">Epigamia Greek Yogurt</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i> 4.5(189)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$18</span><span class="price-old">$24</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-7.jpg" alt="">
+                    <div class="cat-text">Dairy, Bread & Eggs</div>
+                    <div class="prod-title">Britannia Cheese Slices</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> 5(345)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$24</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-8.jpg" alt="">
+                    <div class="cat-text">Instant Food</div>
+                    <div class="prod-title">Kellogg's Corn Flakes</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i> 4(90)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$32</span><span class="price-old">$35</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-9.jpg" alt="">
+                    <div class="cat-text">Snack & Munchies</div>
+                    <div class="prod-title">Slurrp Farm Millet Pancake</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.5(67)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$3</span><span class="price-old">$5</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-10.jpg" alt="">
+                    <div class="cat-text">Dairy, Bread & Eggs</div>
+                    <div class="prod-title">Amul Butter - 500 g</div>
+                    <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i> 3.5(89)</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="price">$13</span><span class="price-old">$18</span></div>
+                        <button class="btn-add-cart">+ Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mb-4">Daily Best Sells</h4>
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="best-sell-banner d-flex flex-column">
+                    <img src="https://freshcart.codescandy.com/assets/images/banner/banner-deal.jpg" alt="Deal Banner" class="img-fluid w-100 rounded-top-3">
+                    <div class="best-sell-content text-white">
+                        <h3 class="mb-3">100% Organic Coffee Beans.</h3>
+                        <p class="mb-4 text-white-50">Get the best deal before close.</p>
+                        <button class="btn btn-success">Shop Now <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-11.jpg" alt="">
+                    <div class="cat-text">Tea, Coffee & Drinks</div>
+                    <div class="prod-title">Roast Ground Coffee</div>
+                    <div class="d-flex gap-2 mb-2 align-items-end">
+                         <div class="price">$13</div> <div class="price-old">$18</div>
+                    </div>
+                    <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.5</div>
+                    <button class="btn btn-success w-100 mb-3 text-white fw-bold">+ Add to cart</button>
+                    <div class="d-flex justify-content-between">
+                        <div class="timer-box"><div class="timer-num">1013</div><div class="timer-label">Days</div></div>
+                        <div class="timer-box"><div class="timer-num">06</div><div class="timer-label">Hours</div></div>
+                        <div class="timer-box"><div class="timer-num">50</div><div class="timer-label">Mins</div></div>
+                        <div class="timer-box"><div class="timer-num">11</div><div class="timer-label">Sec</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-12.jpg" alt="">
+                    <div class="cat-text">Fruits & Vegetables</div>
+                    <div class="prod-title">Crushed Tomatoes</div>
+                     <div class="d-flex gap-2 mb-2 align-items-end">
+                         <div class="price">$13</div> <div class="price-old">$18</div>
+                    </div>
+                    <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.5</div>
+                    <button class="btn btn-success w-100 mb-3 text-white fw-bold">+ Add to cart</button>
+                     <div class="d-flex justify-content-between">
+                        <div class="timer-box"><div class="timer-num">1073</div><div class="timer-label">Days</div></div>
+                        <div class="timer-box"><div class="timer-num">06</div><div class="timer-label">Hours</div></div>
+                        <div class="timer-box"><div class="timer-num">50</div><div class="timer-label">Mins</div></div>
+                        <div class="timer-box"><div class="timer-num">11</div><div class="timer-label">Sec</div></div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-lg-3 col-md-6">
+                <div class="card-product">
+                    <img src="https://freshcart.codescandy.com/assets/images/products/product-img-13.jpg" alt="">
+                    <div class="cat-text">Fruits & Vegetables</div>
+                    <div class="prod-title">Golden Pineapple</div>
+                     <div class="d-flex gap-2 mb-2 align-items-end">
+                         <div class="price">$13</div> <div class="price-old">$18</div>
+                    </div>
+                    <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.5</div>
+                    <button class="btn btn-success w-100 mb-3 text-white fw-bold">+ Add to cart</button>
+                     <div class="d-flex justify-content-between">
+                        <div class="timer-box"><div class="timer-num">1045</div><div class="timer-label">Days</div></div>
+                        <div class="timer-box"><div class="timer-num">06</div><div class="timer-label">Hours</div></div>
+                        <div class="timer-box"><div class="timer-num">50</div><div class="timer-label">Mins</div></div>
+                        <div class="timer-box"><div class="timer-num">11</div><div class="timer-label">Sec</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-box">
+                    <i class="bi bi-clock feature-icon"></i>
+                    <h6>10 minute grocery now</h6>
+                    <p>Get your order delivered to your doorstep at the earliest from FreshCart pickup stores near you.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-box">
+                    <i class="bi bi-gift feature-icon"></i>
+                    <h6>Best Prices & Offers</h6>
+                    <p>Cheaper prices than your local supermarket, great cashback offers to top it off. Get best pricess & offers.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-box">
+                    <i class="bi bi-box-seam feature-icon"></i>
+                    <h6>Wide Assortment</h6>
+                    <p>Choose from 5000+ products across food, personal care, household, bakery, veg and non-veg & other categories.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-box">
+                    <i class="bi bi-arrow-repeat feature-icon"></i>
+                    <h6>Easy Returns</h6>
+                    <p>Not satisfied with a product? Return it at the doorstep & get a refund within hours. No questions asked policy.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-2 mb-4">
+                    <div class="footer-head">Categories</div>
+                    <a href="#" class="footer-link">Vegetables & Fruits</a>
+                    <a href="#" class="footer-link">Breakfast & Instant Food</a>
+                    <a href="#" class="footer-link">Bakery & Biscuits</a>
+                    <a href="#" class="footer-link">Atta, rice & dal</a>
+                    <a href="#" class="footer-link">Sauces & spreads</a>
+                    <a href="#" class="footer-link">Organic & gourmet</a>
+                    <a href="#" class="footer-link">Baby care</a>
+                    <a href="#" class="footer-link">Cleaning essentials</a>
+                    <a href="#" class="footer-link">Personal care</a>
+                </div>
+                
+                <div class="col-md-6 col-lg-2 mb-4">
+                     <div class="footer-head">&nbsp;</div> 
+                    <a href="#" class="footer-link">Dairy, bread & eggs</a>
+                    <a href="#" class="footer-link">Cold drinks & juices</a>
+                    <a href="#" class="footer-link">Tea, coffee & drinks</a>
+                    <a href="#" class="footer-link">Masala, oil & more</a>
+                    <a href="#" class="footer-link">Chicken, meat & fish</a>
+                    <a href="#" class="footer-link">Paan corner</a>
+                    <a href="#" class="footer-link">Pharma & wellness</a>
+                    <a href="#" class="footer-link">Home & office</a>
+                    <a href="#" class="footer-link">Pet care</a>
+                </div>
+
+                <div class="col-md-6 col-lg-2 mb-4">
+                    <div class="footer-head">Get to know us</div>
+                    <a href="#" class="footer-link">Company</a>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Our Value</a>
+                </div>
+
+                <div class="col-md-6 col-lg-2 mb-4">
+                    <div class="footer-head">For Consumers</div>
+                    <a href="#" class="footer-link">Payments</a>
+                    <a href="#" class="footer-link">Shipping</a>
+                    <a href="#" class="footer-link">Product Returns</a>
+                    <a href="#" class="footer-link">FAQ</a>
+                    <a href="#" class="footer-link">Shop Checkout</a>
+                </div>
+
+                <div class="col-md-6 col-lg-2 mb-4">
+                    <div class="footer-head">Become a Shopper</div>
+                    <a href="#" class="footer-link">Shopper Opportunities</a>
+                    <a href="#" class="footer-link">Become a Shopper</a>
+                    <a href="#" class="footer-link">Earnings</a>
+                    <a href="#" class="footer-link">Ideas & Guides</a>
+                    <a href="#" class="footer-link">New Retailers</a>
+                </div>
+                 
+                 <div class="col-md-6 col-lg-2 mb-4">
+                    <div class="footer-head">Freshcart programs</div>
+                    <a href="#" class="footer-link">Freshcart programs</a>
+                    <a href="#" class="footer-link">Gift Cards</a>
+                    <a href="#" class="footer-link">Promos & Coupons</a>
+                    <a href="#" class="footer-link">Freshcart Ads</a>
+                    <a href="#" class="footer-link">Careers</a>
+                </div>
+            </div>
+            
+            <hr class="border-secondary my-4">
+            
+            <div class="d-flex justify-content-between align-items-center flex-wrap pb-4">
+                <div class="text-secondary small">
+                    © 2022 - 2025 FreshCart eCommerce HTML Template. All rights reserved. Powered by Codescandy.
+                </div>
+                <div class="d-flex gap-3">
+                    <span class="text-secondary small">Follow us on</span>
+                    <a href="#" class="border rounded-circle p-1 text-secondary" style="width:30px; height:30px; display:flex; align-items:center; justify-content:center;"><i class="bi bi-facebook"></i></a>
+                     <a href="#" class="border rounded-circle p-1 text-secondary" style="width:30px; height:30px; display:flex; align-items:center; justify-content:center;"><i class="bi bi-twitter"></i></a>
+                      <a href="#" class="border rounded-circle p-1 text-secondary" style="width:30px; height:30px; display:flex; align-items:center; justify-content:center;"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+

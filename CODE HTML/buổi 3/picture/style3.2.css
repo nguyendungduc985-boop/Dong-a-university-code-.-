@@ -1,0 +1,39 @@
+.list-item-sale {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-left: 3px solid #aaa;
+    border-right: 3px solid #aaa;
+    padding: 10px 0;
+}
+.item-sale {
+    width: 180px;
+    height: 230px;
+    border-left: 2px solid #ccc; 
+    border-right: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+}
+.item-sale img {
+    width: 120px;
+    height: auto;
+}
+.item-sale b {
+    font-size: 15px;
+    color: #333;
+}
+.item-sale button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 999px;   
+    font-weight: bold;     
+    box-shadow: 0 0 6px rgba(255, 77, 77, 0.5);
+    cursor: pointer;
+}
